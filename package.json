@@ -1,5 +1,5 @@
 {
-  "name": "tslint-custom-rules-boilerplate",
+  "name": "tslint-fanhub-rules",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eranshabi/tslint-custom-rules-boilerplate.git"
+    "url": "git+https://github.com/webdevleo/tslint-fanhub-rules.git"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",
@@ -37,7 +37,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eranshabi/tslint-custom-rules-boilerplate/issues"
+    "url": "https://github.com/webdevleo/tslint-fanhub-rules/issues"
   },
-  "homepage": "https://github.com/eranshabi/tslint-custom-rules-boilerplate#readme"
+  "homepage": "https://github.com/webdevleo/tslint-fanhub-rules#readme"
 }

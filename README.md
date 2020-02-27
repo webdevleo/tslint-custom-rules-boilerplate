@@ -1,4 +1,4 @@
-# tslint-custom-rules-boilerplate
+# tslint-fanhub-rules
 
 A template for developing a custom TSLint rule, using unit testing.
 
