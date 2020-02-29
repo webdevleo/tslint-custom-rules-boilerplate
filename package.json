@@ -1,6 +1,6 @@
 {
   "name": "tslint-fanhub-rules",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A template for developing a custom TSLint rule, using unit testing.",
   "scripts": {
     "build": "tsc",
