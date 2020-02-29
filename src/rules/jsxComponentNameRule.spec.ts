@@ -7,44 +7,49 @@ describe('jsx-component-name test', () => {
 
 	it(`testing failure functional components without name`, () => {
 		const src = 'export default (): React.FC => null;';
-		const result = helper({src, rule, fileName });
+		const result = helper({
+			src, rule: {
+				name: rule,
+				options: ['Stupid']
+			}, fileName
+		});
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components with React.FC type and null body`, () => {
 		const src = 'const Test: React.FC = () => null;';
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components with FC type and null body`, () => {
 		const src = 'const Test: FC = () => null;';
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components with FC type, generic type and null body`, () => {
 		const src = 'const Nothing: FC<IProps> = () => null;';
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components without types but JSX self closing tag`, () => {
 		const src = 'const Test = () => <CustomElement/>';
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components without types but JSX paired tags`, () => {
 		const src = 'const Test = () => <div>Some text</div>;';
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components without types but JSX self closing tag with attributes`, () => {
 		const src = 'const Test = ({ id, className }) => (<div id={id} className={className}/>);';
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 
@@ -54,7 +59,7 @@ describe('jsx-component-name test', () => {
 		      <div id={id} className={className}/>
 		    );
 		`;
-		const result = helper({src, rule, fileName });
+		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 

@@ -1,9 +1,10 @@
 {
   "name": "tslint-fanhub-rules",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "A template for developing a custom TSLint rule, using unit testing.",
   "scripts": {
     "build": "tsc",
+    "publish": "npm pack",
     "test": "jest"
   },
   "repository": {
@@ -39,5 +40,6 @@
   "bugs": {
     "url": "https://github.com/webdevleo/tslint-fanhub-rules/issues"
   },
-  "homepage": "https://github.com/webdevleo/tslint-fanhub-rules#readme"
+  "homepage": "https://github.com/webdevleo/tslint-fanhub-rules#readme",
+  "main": "tslint-fanhub-rules.json"
 }
