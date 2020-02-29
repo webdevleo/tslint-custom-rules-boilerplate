@@ -8,10 +8,7 @@ describe('jsx-component-name test', () => {
 	it(`testing failure functional components without name`, () => {
 		const src = 'export default (): React.FC => null;';
 		const result = helper({
-			src, rule: {
-				name: rule,
-				options: ['Stupid']
-			}, fileName
+			src, rule, fileName
 		});
 		expect(result.errorCount).toBe(1);
 	});
@@ -30,8 +27,20 @@ describe('jsx-component-name test', () => {
 
 	it(`testing failure functional components with FC type, generic type and null body`, () => {
 		const src = 'const Nothing: FC<IProps> = () => null;';
-		const result = helper({src, rule, fileName});
+		const result = helper({src, rule: {
+				name: rule,
+				options: ['Example']
+			}, fileName});
 		expect(result.errorCount).toBe(1);
+	});
+
+	it(`testing success functional components with FC type, generic type and null body`, () => {
+		const src = 'const CompExample: FC<IProps> = () => null;';
+		const result = helper({src, rule: {
+				name: rule,
+				options: ['Example']
+			}, fileName});
+		expect(result.errorCount).toBe(0);
 	});
 
 	it(`testing failure functional components without types but JSX self closing tag`, () => {

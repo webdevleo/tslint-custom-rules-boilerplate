@@ -2,10 +2,11 @@ import {Configuration, Linter, Replacement} from 'tslint';
 
 export const helper = ({src, rule, fileName = ''}) => {
     const linter = new Linter({fix: false});
+    const options = typeof rule === 'object' && rule.options ? rule.options : [];
 
     linter.lint(fileName, src, Configuration.parseConfigFile({
         rules: {
-            [rule.name || rule]: [true, (typeof rule === 'object' && rule.options || [])]
+            [rule.name || rule]: [true, ...options]
         },
         rulesDirectory: ['src/rules/', 'src/utils/'],
     }));

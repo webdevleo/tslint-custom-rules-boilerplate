@@ -11,7 +11,7 @@ export class Rule extends Lint.Rules.AbstractRule {
 
 	public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
 		const {ruleArguments} = this.getOptions();
-		return this.applyWithFunction<string[]>(sourceFile, walk, ruleArguments[0]);
+		return this.applyWithFunction<string[]>(sourceFile, walk, ruleArguments);
 	}
 }
 
@@ -22,7 +22,7 @@ function walk(ctx: Lint.WalkContext<string[]>) {
 		}
 
 		if (isJSXLikeComponent(node)) {
-			const ACCEPTED_VALUE = ctx.options.length ? ctx.options : ALLOWED_PREFIXES;
+			const ACCEPTED_VALUE = ctx.options && ctx.options.length ? ctx.options : ALLOWED_PREFIXES;
 			const name = getComponentName(node);
 
 			const is_name_correct = ACCEPTED_VALUE.some(prefix => name.endsWith(prefix));
