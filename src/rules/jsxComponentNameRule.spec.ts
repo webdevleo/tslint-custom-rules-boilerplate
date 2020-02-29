@@ -12,45 +12,45 @@ describe('jsx-component-name test', () => {
 	});
 
 	it(`testing failure functional components with React.FC type and null body`, () => {
-		const src = 'const MyComponent: React.FC = () => null;';
+		const src = 'const Test: React.FC = () => null;';
 		const result = helper({src, rule, fileName });
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components with FC type and null body`, () => {
-		const src = 'const MyComponent: FC = () => null;';
+		const src = 'const Test: FC = () => null;';
 		const result = helper({src, rule, fileName });
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components with FC type, generic type and null body`, () => {
-		const src = 'const MyComponent: FC<IProps> = () => null;';
+		const src = 'const Nothing: FC<IProps> = () => null;';
 		const result = helper({src, rule, fileName });
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components without types but JSX self closing tag`, () => {
-		const src = 'const MyComponent = () => <CustomElement/>';
+		const src = 'const Test = () => <CustomElement/>';
 		const result = helper({src, rule, fileName });
 
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components without types but JSX paired tags`, () => {
-		const src = 'const MyComponent = () => <div>Some text</div>;';
+		const src = 'const Test = () => <div>Some text</div>;';
 		const result = helper({src, rule, fileName });
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components without types but JSX self closing tag with attributes`, () => {
-		const src = 'const MyComponent = ({ id, className }) => (<div id={id} className={className}/>);';
+		const src = 'const Test = ({ id, className }) => (<div id={id} className={className}/>);';
 		const result = helper({src, rule, fileName });
 		expect(result.errorCount).toBe(1);
 	});
 
 	it(`testing failure functional components with types and JSX self closing tag with attributes`, () => {
 		const src = `
-			const MyComponent: React.FC<{ id: number, className: string }> = ({ id, className }) => (
+			const Test: React.FC<{ id: number, className: string }> = ({ id, className }) => (
 		      <div id={id} className={className}/>
 		    );
 		`;
@@ -65,7 +65,7 @@ describe('jsx-component-name test', () => {
 	});
 
 	it(`testing success JSX function with correct prefix name`, () => {
-		const src = 'const ComponentMy = ({ id, className }) => (<div id={id} className={className}/>);';
+		const src = 'const TestComponent = ({ id, className }) => (<div id={id} className={className}/>);';
 		const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(0);
 	});
@@ -96,7 +96,7 @@ describe('jsx-component-name test', () => {
 
 	it(`testing failure Class component`, () => {
 		const src = `
-			export class MyComponent extends React.Component {
+			export class Test extends React.Component {
 				render() {
 					return null;
 				}
@@ -109,7 +109,7 @@ describe('jsx-component-name test', () => {
 
 	it(`testing failure`, () => {
 		const src = `
-			export class MyComponent extends React.PureComponent<IProps> {
+			export class Test extends React.PureComponent<IProps> {
 				render() {
 					return null;
 				}
@@ -122,7 +122,7 @@ describe('jsx-component-name test', () => {
 
 	it(`testing success`, () => {
 		const src = `
-			export class ComponentMy extends React.Component implements IComponent {
+			export class TestComponent extends React.Component implements IComponent {
 				render() {
 					return null;
 				}

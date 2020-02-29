@@ -5,7 +5,7 @@ import { isJSXLikeComponent, getComponentName } from "../utils";
 const ALLOWED_PREFIXES = ['Component', 'Page', 'HOC'];
 
 export class Rule extends Lint.Rules.AbstractRule {
-    static FAILURE_STRING = `Component name should start with one of the following words: ${ALLOWED_PREFIXES.join(', ')}`;
+    static FAILURE_STRING = `Component name should end with one of the following words: ${ALLOWED_PREFIXES.join(', ')}`;
     static ALLOWED_PREFIXES = ALLOWED_PREFIXES;
 
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
@@ -22,7 +22,7 @@ function walk(ctx: Lint.WalkContext<void>) {
         if(isJSXLikeComponent(node)) {
             const name = getComponentName(node);
 
-            const is_name_correct = Rule.ALLOWED_PREFIXES.some(prefix => name.startsWith(prefix));
+            const is_name_correct = Rule.ALLOWED_PREFIXES.some(prefix => name.endsWith(prefix));
 
             if(!is_name_correct) {
                 ctx.addFailureAt(node.getStart(), node.getEnd() - node.getStart(), Rule.FAILURE_STRING);
