@@ -1,6 +1,6 @@
 import * as Lint from 'tslint';
 import * as ts from 'typescript';
-import { getComponentName, isJSXLikeComponent } from "../utils";
+import { getComponentName, isJSXLikeComponent } from "../../utils";
 
 const ALLOWED_PREFIXES = ['Component', 'Page', 'HOC'];
 

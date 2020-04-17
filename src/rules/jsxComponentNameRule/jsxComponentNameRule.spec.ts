@@ -1,4 +1,4 @@
-import { helper } from '../lintRunner';
+import { helper } from '../../lintRunner';
 
 const rule = 'jsx-component-name';
 const fileName = 'ComponentName.tsx';
@@ -7,9 +7,7 @@ describe('jsx-component-name test', () => {
 
 	it(`testing failure functional components without name`, () => {
 		const src = 'export default (): React.FC => null;';
-		const result = helper({
-			src, rule, fileName
-		});
+        const result = helper({src, rule, fileName});
 		expect(result.errorCount).toBe(1);
 	});
 

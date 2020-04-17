@@ -1,4 +1,4 @@
-import { getFixedResult, helper } from '../lintRunner';
+import { getFixedResult, helper } from '../../lintRunner';
 import { Rule } from './myCustomRule';
 
 const rule = 'my-custom';
