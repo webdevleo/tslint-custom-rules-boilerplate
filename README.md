@@ -1,9 +1,34 @@
-# tslint-fanhub-rules
+eslint-plugin-fanhub-rules
+===================
 
-A template for developing a custom TSLint rule, using unit testing.
+# Configuration
 
-Easiest developing cycle would be to change some tests (the `.spec` [file](src/rules/myCustomRule.spec.ts)), change the [rule](src/rules/myCustomRule.ts), and then run `npm test` to check everything is as expected.
+Just add the plugin into linter's configuration file
 
-Inside the [test file](src/rules/myCustomRule.spec.ts) you have a minimal working example of how to test failures (including position and messages), successes and fixers.
+```json
+  "extends": [
+    "eslint-plugin-fanhub-rules"
+  ]
+```
 
-After your rule is ready you can compile it using `npm run build`, and use the results in the `dist` folder.
+You can also enable or disable the rules that you would like to use.
+
+```json
+  "rules": {
+    "jsx-icon-component-name": "error"
+  }
+```
+
+# List of supported rules
+
+<!-- AUTO-GENERATED-CONTENT:START (BASIC_RULES) -->
+<!-- AUTO-GENERATED-CONTENT:END -->
+
+## JSX-specific rules
+
+<!-- AUTO-GENERATED-CONTENT:START (JSX_RULES) -->
+<!-- AUTO-GENERATED-CONTENT:END -->
+
+# License
+
+This plugin licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).

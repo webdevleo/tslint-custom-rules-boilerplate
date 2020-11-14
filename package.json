@@ -1,31 +1,52 @@
 {
-    "name": "tslint-fanhub-rules",
-    "version": "1.1.6",
-    "description": "A template for developing a custom TSLint rule, using unit testing.",
+    "name": "eslint-plugin-fanhub-rules",
+    "version": "2.0.0",
+    "private": false,
+    "description": "Linting for React applications, following the FanHubMedia company styleguide",
+    "contributors": [
+        "Eugene Lokotkov <leo@rucoder.net>"
+    ],
     "scripts": {
-        "build": "tsc",
-        "publish": "yarn build | yarn pack",
-        "test": "jest"
+        "describe": "npm-scripts-info",
+        "release": "jest && del dist eslint-plugin-fanhub-* && tsc && md-magic --path README.md && yarn publish",
+        "build": "jest && del dist && tsc && npm pack",
+        "test": "jest",
+        "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('fe-common-utils must be installed with Yarn: https://yarnpkg.com/')\""
+    },
+    "scripts-info": {
+        "describe": "Display commands info",
+        "release": "Prepare and publish the package to the npm registry",
+        "test": "Run project unit testing",
+        "preinstall": "It's required to prevent use of NPM. YARN should be unsed instead. DO NOT REMOVE THIS SCRIPT!"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/webdevleo/tslint-fanhub-rules.git"
+        "url": "https://github.com/webdevleo/tslint-fanhub-rules.git"
     },
     "devDependencies": {
-        "@types/jest": "^25.1.3",
-        "jest": "^25.1.0",
-        "ts-jest": "^25.2.1",
-        "typescript": "^3.8.2",
-        "tsutils": "^3.17.1"
+        "@types/eslint": "^7.2.0",
+        "@types/node": "^14.14.7",
+        "@types/jest": "^26.0.15",
+        "@typescript-eslint/experimental-utils": "^4.7.0",
+        "@typescript-eslint/parser": "^4.7.0",
+        "del-cli": "^3.0.1",
+        "jest": "^26.6.3",
+        "markdown-magic": "^1.0.0",
+        "npm-scripts-info": "^0.3.9",
+        "semver": "^7.3.2",
+        "ts-jest": "^26.4.4",
+        "eslint": "^7.13.0",
+        "typescript": "^4.0.5"
     },
-    "dependencies": {
-        "tslint": "^6.0.0"
-    },
+    "dependencies": {},
     "jest": {
         "moduleFileExtensions": [
             "ts",
             "tsx",
-            "js"
+            "js",
+            "jsx",
+            "json",
+            "node"
         ],
         "transform": {
             "^.+\\.(ts|tsx)$": "ts-jest"
@@ -36,13 +57,16 @@
         "moduleDirectories": [
             "node_modules"
         ],
+        "modulePaths": [
+            "src"
+        ],
         "testEnvironment": "node"
     },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/webdevleo/tslint-fanhub-rules/issues"
-    },
-    "homepage": "https://github.com/webdevleo/tslint-fanhub-rules#readme",
-    "main": "tslint-fanhub-rules.json"
+    "author": "Eugene Lokotkov",
+    "license": "MIT",
+    "homepage": "https://github.com/webdevleo/tslint-fanhub-rules",
+    "main": "dist/index.js",
+    "wallaby": {
+        "autoDetect": true
+    }
 }

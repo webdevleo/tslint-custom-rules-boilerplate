@@ -1,0 +1,6 @@
+{
+    "extends": "./configs/base.json",
+    "rules": {
+        "fanhub-rules/no-debugger-statement": "error"
+    }
+}

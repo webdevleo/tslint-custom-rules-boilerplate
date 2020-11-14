@@ -1,6 +1,0 @@
-{
-  "rules": {
-    "jsx-icons-name": true
-  },
-  "rulesDirectory": "./dist/rules"
-}
